@@ -21,7 +21,7 @@ d3.json("../samples.json").then(function(data) {
     var samples = data.samples;
 
     // filter by `selectedId`
-    var metaFilter = metadata.filter(md => +md.id === +selectedId);
+    var metaFilter = metadata.filter(md => +md.id === +selectedId)[0];
     var sampleFilter = samples.filter(sm => +sm.id === +selectedId);
 
     // retrieve sample data
@@ -66,4 +66,9 @@ d3.json("../samples.json").then(function(data) {
 
     // plot bubble chart
     Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+
+    // render demographic info
+    for (let [key, value] of Object.entries(metaFilter)) {
+        demoInfo.append("div").text(`${key}: ${value}`);
+    }
 });
