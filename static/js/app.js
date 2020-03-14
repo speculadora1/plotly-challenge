@@ -4,7 +4,7 @@ var demoInfo = d3.select("#sample-metadata");
 
 // tell d3 how to handle
 function optionChanged(id) {
-    d3.json("../samples.json").then(function(data) {
+    d3.json("data/samples.json").then(function(data) {
         // load data
         var metadata = data.metadata;
         var samples = data.samples;
@@ -38,7 +38,7 @@ function optionChanged(id) {
 };
 
 // read in data, render plots
-d3.json("../samples.json").then(function(data) {
+d3.json("data/samples.json").then(function(data) {
     // sort id's
     var ids = data.names.sort((a, b) => a - b);
 
